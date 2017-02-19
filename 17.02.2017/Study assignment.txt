@@ -1,0 +1,30 @@
+What is nested list?
+- A list within another list is said to be nested.
+
+
+Can a list store both integers and string in it?
+- Absolutely, a list can store types of elements.
+
+
+Exercise 1
+What is the Python interpreter's response to the following?
+>>> list(range(10, 0, -2))
+[10,8,6,4,2]
+
+
+Exercise 2
+Consider this fragment of code:
+	1 import turtle
+	2
+	3 tess = turtle.Turtle()
+	4 alex = tess
+	5 alex.color("hotpink")
+
+Does this fragment create one or two turtle instances? 
+- This fragment create two turtles.
+
+Does setting the color of alex also change the color of tess? 
+- No, it doesn't
+
+Explain in detail.
+- alex is a duplicated version of tess. Color of alex will be changed after duplication. Therefore, the color of tess remains black but alex's turns into hotpink.
