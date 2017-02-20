@@ -3,7 +3,7 @@ What is nested list?
 
 
 Can a list store both integers and string in it?
-- Absolutely, a list can store types of elements.
+- It totally can, a list can store types of elements.
 
 
 Exercise 1
