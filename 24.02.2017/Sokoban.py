@@ -41,16 +41,16 @@ def box_in_corner(bx, by):
 
 def touch_box(px, py, bx, by):
     if px - bx == 0 and py - by == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if px - bx == 0 and by - py == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if py - by == 0 and bx - px == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if py - by == 0 and bx - px == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
 while True:
     for y in range(screen_height):
