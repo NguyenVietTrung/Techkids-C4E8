@@ -41,17 +41,31 @@ def box_in_corner(bx, by):
 
 def touch_box(px, py, bx, by):
     if px - bx == 0 and py - by == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if px - bx == 0 and by - py == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if py - by == 0 and bx - px == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
     if py - by == 0 and bx - px == -1:
-        print("You taught the box")
+        print("You've touched the box")
         return True
+
+def pushing(px, py, bx, by, choice):
+    if(bx == px):
+        if(by - py == 1) and (choice == 's'):
+            return True
+        if(py - by == 1) and (choice == 'w'):
+            return True
+    if(by == py):
+        if(px - bx == 1) and (choice == 'a'):
+            return True
+        if(bx - px == 1) and (choice == 'd'):
+            return True
+    return False
+
 while True:
     for y in range(screen_height):
         for x in range(screen_width):
@@ -80,7 +94,11 @@ while True:
         dx = 1
 
     [next_px, next_py] = move(px, py, dx, dy)
-    [next_bx, next_by] = move(bx, by, dx, dy)
+    if (pushing(px, py, bx, by, choice)):
+        [next_bx, next_by] = move(bx, by, dx, dy)
+    else:
+        next_bx = bx
+        next_by = by
 
     if not in_map(next_px, next_py, screen_width, screen_height):
         print("Go away!!!")
