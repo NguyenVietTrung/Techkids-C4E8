@@ -1,14 +1,3 @@
-px = 1
-py = 2
-bx = 2
-by = 2
-cx = 4
-cy = 3
-
-screen_width = 5
-screen_height = 5
-
-
 def in_map(x, y, screen_width, screen_height):
     if x < 0 or y < 0 or x > screen_width - 1 or y > screen_height - 1:
         return False
@@ -52,6 +41,30 @@ def touch_box(px, py, bx, by):
     if py - by == 0 and bx - px == -1:
         print("You've touched the box")
         return True
+
+def pushing(px, py, bx, by, choice):
+    if(bx == px):
+        if(by - py == 1) and (choice == 'S'):
+            return True
+        if(py - by == 1) and (choice == 'W'):
+            return True
+    if(by == py):
+        if(px - bx == 1) and (choice == 'A'):
+            return True
+        if(bx - px == 1) and (choice == 'D'):
+            return True
+    return False
+
+px = 1
+py = 2
+bx = 2
+by = 2
+cx = 4
+cy = 3
+
+screen_width = 8
+screen_height = 8
+
 while True:
     for y in range(screen_height):
         for x in range(screen_width):
@@ -80,7 +93,11 @@ while True:
         dx = 1
 
     [next_px, next_py] = move(px, py, dx, dy)
-    [next_bx, next_by] = move(bx, by, dx, dy)
+    if pushing(px, py, bx, by, choice):
+        [next_bx, next_by] = move(bx, by, dx, dy)
+    else:
+        next_bx = bx
+        next_by = by
 
     if not in_map(next_px, next_py, screen_width, screen_height):
         print("Go away!!!")
