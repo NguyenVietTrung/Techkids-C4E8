@@ -26,7 +26,6 @@ def find_objects(objects, x, y):
     return None
 
 def print_map(boxes, p, gates, screen_width, screen_height):
-    i = 0
     for y in range(screen_height):
         for x in range(screen_width):
             if x == p["x"] and y == p["y"]:
