@@ -6,12 +6,12 @@ screen_width = 12
 screen_height = 12
 gates = []
 gates.append({"x" : 3, "y" :7})
-gates.append({"x" : 6, "y" :5})
-gates.append({"x" : 5, "y" :3})
+gates.append({"x" : 4, "y" :8})
+gates.append({"x" : 5, "y" :9})
 boxes = []
-boxes.append({"x" : 5,"y" : 9})
-boxes.append({"x" : 1,"y" : 8})
-boxes.append({"x" : 4,"y" : 6})
+boxes.append({"x" : 5,"y" : 5})
+boxes.append({"x" : 5,"y" : 8})
+boxes.append({"x" : 5,"y" : 6})
 
 def check_match(object, x, y):
     for box in object:
@@ -26,7 +26,6 @@ def find_objects(objects, x, y):
     return None
 
 def print_map(boxes, p, gates, screen_width, screen_height):
-    i = 0
     for y in range(screen_height):
         for x in range(screen_width):
             if x == p["x"] and y == p["y"]:
@@ -41,7 +40,7 @@ def print_map(boxes, p, gates, screen_width, screen_height):
 
 def check_win(boxes, gates):
     for i in range(len(boxes)):
-        if(boxes[i]["x"] != gates[i]["x"]) and (boxes[i]["y"] != gates[i]["y"]):
+        if(boxes[i]["x"] != gates[i]["x"]) or (boxes[i]["y"] != gates[i]["y"]):
             return False
     return True
 
