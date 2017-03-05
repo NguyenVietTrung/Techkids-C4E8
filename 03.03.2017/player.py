@@ -20,6 +20,4 @@ class Player:
         if self.x == x and self.y == y:
             self.text = "P "
             return True
-
 #player = Player(1,2 )  # tuc la player.x = 3, player.y = 2
-
