@@ -47,7 +47,12 @@ class Map:
                 self.player.move(dx, dy)
                 self.box.move(dx, dy)
         else:
+            self.sound_once("Pickup_Coin.wav")
             self.player.move(dx, dy)
+
+    def sound_once(self, file_name):
+        pygame.mixer.music.load(file_name)
+        pygame.mixer.music.play(0)
 
     def check_win(self):
         if [self.box.x, self.box.y] == [self.gate.x, self.gate.y]:
