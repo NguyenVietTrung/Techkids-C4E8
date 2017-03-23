@@ -23,7 +23,7 @@ images_on_sever = [
 
 @app.route('/')
 def hello_world():
-    return redirect(url_for("dota"))
+    return redirect(url_for("w3cssdemo"))
 
 
 current_time = str(datetime.now())
@@ -47,6 +47,17 @@ def dota():
 def information():
     return render_template("contact.html")
 
+@app.route('/cssdemo')
+def cssdemo():
+    return render_template("cssdemo.html")
+
+@app.route('/w3cssdemo')
+def w3cssdemo():
+    return render_template("w3cssdemo.html")
+
+@app.route('/Mio_CV')
+def foodblog():
+    return render_template("Mio_CV.html")
 
 if __name__ == '__main__':
     app.run()
