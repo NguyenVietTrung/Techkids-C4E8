@@ -83,23 +83,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
       <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+
+        {% for experience in experience_list %}
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Kill dozens of bug (real bug)</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Meow Meow Meow Meow Meow Meow Meow Meow Meow those mofo annoying flying objects Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow </p>
+          <h5 class="w3-opacity"><b>{{ experience.title }}</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ experience.from_ }}</h6>
+          <p>{{ experience.description }}</p>
           <hr>
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Drink water in toilet</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-          <p>Meow Meow Meow Meow Meow Meow Meow Meow what a shame Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow </p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Sleep in every freaking places</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-          <p>Meow Meow Meow mình thích thì mình ngủ thôi Meow Meow Meow Meow Meow</p><br>
-        </div>
+        {% endfor %}
       </div>
 
       <div class="w3-container w3-card-2 w3-white">

@@ -1,29 +1,20 @@
 from flask import *
 from datetime import *
+import mlab
+from models.experience import Experience
 
+# connect to mlab database
 app = Flask(__name__)
 
-images_on_sever = [
-    {
-        "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPWZNJkKcjT8zEPVwcWC78wAAysC6jlDr3cA2zgtHlOiQYtpZ_Kg",
-        "title": "loading screen 1",
-        "tags": "tag 1"
-        },
-    {
-        "src": "https://www.wired.com/wp-content/uploads/2016/03/GW20160134040.jpg",
-        "title": "loading screen 2",
-        "tags": "tag 2"
-    },
-    {
-        "src": "https://s-media-cache-ak0.pinimg.com/736x/f4/5e/9d/f45e9dbac8cac965a7aa5085a8ed6c3e.jpg",
-        "title": "loading screen 3",
-        "tags": "tag 3"
-    }
-]
+#create a new FoodItem and save it to database
+mlab.connect()
+
+
+
 
 @app.route('/')
 def hello_world():
-    return redirect(url_for("w3cssdemo"))
+    return redirect(url_for("deleteinfo"))
 
 
 current_time = str(datetime.now())
@@ -56,8 +47,31 @@ def w3cssdemo():
     return render_template("w3cssdemo.html")
 
 @app.route('/Mio_CV')
-def foodblog():
-    return render_template("Mio_CV.html")
+def Mio_CV():
+    return render_template("Mio_CV.html", experience_list=Experience.objects())
+
+@app.route('/addimage', methods=["GET","POST"])
+def addImage():
+    if request.method == "GET":
+        return render_template("addimage.html")
+    if request.method == "POST":
+        new_info = Experience()
+        new_info.from_ = request.form["time"]
+        new_info.title = request.form["title"]
+        new_info.description = request.form["description"]
+        # new_info.image = request.files["image"]
+        new_info.save()
+        return render_template("addimage.html")
+
+@app.route('/deleteinfo', methods=["GET","POST"])
+def deleteinfo():
+    if request.method == "GET":
+        return render_template("deleteinfo.html")
+    if request.method == "POST":
+        new_info = Experience.objects(title=request.form["title"]).first()
+        if new_info is not None:
+            new_info.delete()
+        return render_template("deleteinfo.html")
 
 if __name__ == '__main__':
     app.run()
